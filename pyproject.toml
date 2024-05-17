@@ -1,0 +1,25 @@
+[build-system]
+requires = ["setuptools"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "textminer"
+authors = [
+	{name = "Max Strandén", email = "max.stranden@gmail.com"},
+]
+description = "Utilities for text mining"
+version = "0.0.1"
+requires-python = ">=3.12"
+dependencies = [
+	"conllu",
+]
+
+[project.optional-dependencies]
+dev = ["pytest"]
+
+[project.scripts]
+conllu2doc = "textminer.conllu2doc:cli"
+
+[project.urls]
+Homepage = "https://github.com/StranMax/webscraper"
+Documentation = "https://github.com/StranMax/webscraper"
