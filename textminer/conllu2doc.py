@@ -15,11 +15,6 @@ from io import open
 from conllu import parse_incr, parse
 from pathlib import Path
 
-logging.basicConfig(
-    format='[%(asctime)s] - [%(levelname)s] - %(message)s', 
-    level=logging.DEBUG, 
-    datefmt='%d-%b-%y %H:%M:%S'
-    )
 
 def cli_args():
     parser = argparse.ArgumentParser(description=__doc__, prog="conllu2doc")
@@ -28,13 +23,38 @@ def cli_args():
     
     parser.add_argument("--upos", type=str, nargs="*", 
                         help="Filter by upostags")
+                        
+    parser.add_argument(
+     "-v",
+     "--verbose",
+     action="count",
+     default=0,
+     help="Verbosity (-v, -vv, etc)")
 
     return parser.parse_args()
-    
+ 
+def log_config(verbose):
+    match verbose:
+        case 0:
+            loglevel = logging.ERROR
+        case 1:
+            loglevel = logging.WARNING
+        case 2:
+            loglevel = logging.MESSAGE
+        case 3:
+            loglevel = logging.DEBUG
+            
+    logging.basicConfig(
+        format='[%(asctime)s] - [%(levelname)s] - %(message)s', 
+        level=loglevel, 
+        datefmt='%d-%b-%y %H:%M:%S'
+    )
     
 def cli():
     args = cli_args()
+    log_config(args.verbose)
     logging.debug(args)
+    
     upos = [{"upos": upos} for upos in args.upos]
     logging.debug(upos)
     data = open(args.path, "r", encoding="utf-8")
@@ -43,3 +63,4 @@ def cli():
             tokenlist = tokenlist.filter(**upo)
             for sentence in tokenlist:
                 print(sentence["lemma"], end=", ")
+
