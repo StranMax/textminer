@@ -5,7 +5,7 @@ Command line tools for text mining
 In development stage with following tasks:
 
 1. Task is to create tool for converting raw conll-u files to one 
-line per document in style "<DOC>": "<LEMMA>", "<LEMMA>", "<LEMMA>"...  
+line per document in style `"<DOC>": "<LEMMA>", "<LEMMA>", "<LEMMA>"...`  
 with stopwords removed
 
 ## Installation
