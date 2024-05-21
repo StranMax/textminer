@@ -40,7 +40,7 @@ def log_config(verbose):
         case 1:
             loglevel = logging.WARNING
         case 2:
-            loglevel = logging.MESSAGE
+            loglevel = logging.INFO
         case 3:
             loglevel = logging.DEBUG
             
@@ -50,17 +50,21 @@ def log_config(verbose):
         datefmt='%d-%b-%y %H:%M:%S'
     )
     
+#def conllu_reader():
+    
+#def remove_stopwords(rm_names, rm_numerals):
+    
 def cli():
     args = cli_args()
+    
     log_config(args.verbose)
     logging.debug(args)
     
-    upos = [{"upos": upos} for upos in args.upos]
-    logging.debug(upos)
     data = open(args.path, "r", encoding="utf-8")
+    
     for tokenlist in parse_incr(data):
-        for upo in upos:
-            tokenlist = tokenlist.filter(**upo)
-            for sentence in tokenlist:
-                print(sentence["lemma"], end=", ")
+        if args.upos is not None:
+            tokenlist = tokenlist.filter(upos=lambda upo: upo in args.upos)
+        for sentence in tokenlist:
+            print("<" + sentence["lemma"], end="> ")
 
