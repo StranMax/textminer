@@ -33,6 +33,7 @@ def cli_args():
 
     return parser.parse_args()
  
+ 
 def log_config(verbose):
     match verbose:
         case 0:
@@ -53,18 +54,54 @@ def log_config(verbose):
 #def conllu_reader():
     
 #def remove_stopwords(rm_names, rm_numerals):
+
+
+class ConlluReader:
+    def __init__(self, path, **kwargs):
+        self.path = path
+        self._kwargs = kwargs
+        logging.debug("Initialize ConlluReader with %s and %s", path, kwargs)
     
+    def __enter__(self):
+        logging.debug("Entering with statement")
+        self.file_obj = open(self.path, mode='r', **self._kwargs)
+        return self.file_obj
+        
+    def __exit__(self, exc_type, exc_val, exc_tb):
+        if self.file_obj:
+            logging.debug("Exiting with statement")
+            self.file_obj.close()
+        
+    def __iter__(self):
+        for tokenlist in parse_incr(self):
+            yield tokenlist
+        
+    #def __next__(self):
+    #    tokenlist = self.next()
+    #    if tokenlist is not None:
+    #        return tokenlist
+    #    else:
+    #        raise StopIteration
+        
+
 def cli():
     args = cli_args()
     
     log_config(args.verbose)
     logging.debug(args)
     
-    data = open(args.path, "r", encoding="utf-8")
-    
-    for tokenlist in parse_incr(data):
-        if args.upos is not None:
-            tokenlist = tokenlist.filter(upos=lambda upo: upo in args.upos)
-        for sentence in tokenlist:
-            print("<" + sentence["lemma"], end="> ")
-
+    #data = open(args.path, "r", encoding="utf-8")
+    #
+    #for tokenlist in parse_incr(data):
+    #    if args.upos is not None:
+    #        tokenlist = tokenlist.filter(upos=lambda upo: upo in args.upos)
+    #    for sentence in tokenlist:
+    #        print("<" + sentence["lemma"], end="> ")
+    with ConlluReader(args.path, encoding='utf-8') as data:
+        for tokenlist in parse_incr(data):
+        #for tokenlist in data:
+            logging.debug("tokenlist: %s", tokenlist)
+            if args.upos is not None:
+                tokenlist = tokenlist.filter(upos=lambda upo: upo in args.upos)
+            for sentence in tokenlist:
+                print("<" + sentence["lemma"], end="> ")
