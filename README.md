@@ -5,7 +5,7 @@ Command line tools for text mining
 In development stage with following tasks:
 
 1. Task is to create tool for converting raw conll-u files to one 
-line per document in style `"<DOC>": "<LEMMA>", "<LEMMA>", "<LEMMA>"...`  
+line per document in MALLET style `id	document	LEMMA LEMMA LEMMA ...`  
 with stopwords removed
 
 ## Installation
@@ -21,8 +21,10 @@ Requisites:
 
 ## Usage
 
-```python
-
+```
+conllu2doc.exe C:\Users\maxs\Documents\data\kansallisarkiston_oaipmh_haku_maaseutu\conllu C:\Users\maxs\Documents\data\kansallisarkiston_oaipmh_haku_maaseutu\text_corpus_rmstopwords_lemma_ver4.txt -v --upos "NOUN" "VERB" "ADJ"
 ```
 
 ## TODO list:
+
+* Threaded read and write (thread safe write with lock)
