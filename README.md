@@ -2,21 +2,50 @@
 
 Command line tools for text mining
 
-In development stage with following tasks:
-
-1. Task is to create tool for converting raw conll-u files to one 
+1. Tool for converting raw conll-u files to one 
 line per document in MALLET style `id	document	LEMMA LEMMA LEMMA ...`  
 with stopwords removed
 
+2. Natural language processing with [trankit](https://github.com/nlp-uoregon/trankit).  
+- Sentence segmentation  
+- Tokenization  
+- Posdep tagging  
+- Lemmatization  
+
+3. Sentence embedding and clustering  
+- Sentence embedding  
+- Dimensionality reduction  
+- Clustering  
+- Labeling  
+
 ## Installation
 
+> NOTE! GPU-support requires compatible GPU with 
+correct version of CUDA-driver, CUDA-toolkit and 
+pytorch package.  
+> With CUDA toolkit 11.8 execute following command:  
+```
+pip install torch==2.0.1 torchvision==0.15.2 torchaudio==2.0.2 --index-url https://download.pytorch.org/whl/cu118
+```
+
+Then you can proceed by installing this package normally:  
 ```
 pip install git+https://github.com/StranMax/textmining.git@master
 ```
 
+or optionally:  
+```
+pip install "textmining[preprocessing] @ git+https://github.com/StranMax/textmining.git@master"
+```
+
+or:  
+```
+pip install "textmining[clustering] @ git+https://github.com/StranMax/textmining.git@master"
+```
+
 Requisites:
 
-- python>=3.12  
+- python>=3.10  
 - conllu
 
 ## Usage

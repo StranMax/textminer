@@ -9,17 +9,25 @@ authors = [
 ]
 description = "Utilities for text mining"
 version = "0.0.1"
-requires-python = ">=3.12"
+requires-python = ">=3.10"
 dependencies = [
 	"conllu",
 ]
 
 [project.optional-dependencies]
 dev = ["pytest"]
+preprocessing = [
+	"trankit"
+]
+clustering = [
+	"huggingface_hub", 
+	"transformers",
+	"sentence_transformers"
+]
 
 [project.scripts]
 conllu2doc = "textminer.conllu2doc:cli"
 
 [project.urls]
-Homepage = "https://github.com/StranMax/webscraper"
-Documentation = "https://github.com/StranMax/webscraper"
+Homepage = "https://github.com/StranMax/textminer"
+Documentation = "https://github.com/StranMax/textminer"
