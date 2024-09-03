@@ -11,23 +11,34 @@ description = "Utilities for text mining"
 version = "0.0.1"
 requires-python = ">=3.10"
 dependencies = [
-	"conllu",
+	"conllu"
 ]
 
 [project.optional-dependencies]
 dev = ["pytest"]
 preprocessing = [
-	"trankit"
+	"trankit",
+	"six",
+	"PyPDF2", 
+	"pycryptodome"
 ]
 clustering = [
 	"huggingface_hub", 
 	"transformers",
-	"sentence_transformers"
+	"sentence_transformers",
+	"scikit-learn", 
+	"numpy", 
+	"pandas", 
+	"umap-learn"
 ]
 
 [project.scripts]
 conllu2doc = "textminer.conllu2doc:cli"
+preprocess_docs = "textminer.preprocess_docs:main"
 
 [project.urls]
 Homepage = "https://github.com/StranMax/textminer"
 Documentation = "https://github.com/StranMax/textminer"
+
+[tool.setuptools.packages.find]
+exclude = ["cache*"]

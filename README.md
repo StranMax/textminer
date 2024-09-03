@@ -22,8 +22,8 @@ with stopwords removed
 
 > NOTE! GPU-support requires compatible GPU with 
 correct version of CUDA-driver, CUDA-toolkit and 
-pytorch package.  
-> With CUDA toolkit 11.8 execute following command:  
+pytorch package. More details on pytorch [here](https://pytorch.org/get-started/locally/).
+> With CUDA toolkit 11.8 on Windows 11 system execute following command:  
 ```
 pip install torch==2.0.1 torchvision==0.15.2 torchaudio==2.0.2 --index-url https://download.pytorch.org/whl/cu118
 ```
@@ -33,12 +33,12 @@ Then you can proceed by installing this package normally:
 pip install git+https://github.com/StranMax/textmining.git@master
 ```
 
-or optionally:  
+or optionally for trankit:  
 ```
 pip install "textmining[preprocessing] @ git+https://github.com/StranMax/textmining.git@master"
 ```
 
-or:  
+or for transformers:  
 ```
 pip install "textmining[clustering] @ git+https://github.com/StranMax/textmining.git@master"
 ```
