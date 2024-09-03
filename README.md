@@ -54,6 +54,11 @@ Requisites:
 conllu2doc.exe C:\Users\maxs\Documents\data\kansallisarkiston_oaipmh_haku_maaseutu\conllu C:\Users\maxs\Documents\data\kansallisarkiston_oaipmh_haku_maaseutu\text_corpus_rmstopwords_lemma_ver4.txt -v --upos "NOUN" "VERB" "ADJ"
 ```
 
+NLP tasks using trankit:  
+```
+preprocess_docs -vvv C:\Users\maxst\Desktop\MAAVALTA\documents C:\Users\maxst\Desktop\MAAVALTA\
+```
+
 ## TODO list:
 
 * Threaded read and write (thread safe write with lock)
