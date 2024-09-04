@@ -30,17 +30,17 @@ pip install torch==2.0.1 torchvision==0.15.2 torchaudio==2.0.2 --index-url https
 
 Then you can proceed by installing this package normally:  
 ```
-pip install git+https://github.com/StranMax/textmining.git@master
+pip install git+https://github.com/StranMax/textminer.git@master
 ```
 
 or optionally for trankit:  
 ```
-pip install "textmining[preprocessing] @ git+https://github.com/StranMax/textmining.git@master"
+pip install "textminer[preprocessing] @ git+https://github.com/StranMax/textminer.git@master"
 ```
 
 or for transformers:  
 ```
-pip install "textmining[clustering] @ git+https://github.com/StranMax/textmining.git@master"
+pip install "textminer[clustering] @ git+https://github.com/StranMax/textminer.git@master"
 ```
 
 Requisites:
