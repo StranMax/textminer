@@ -35,6 +35,7 @@ clustering = [
 [project.scripts]
 conllu2doc = "textminer.conllu2doc:cli"
 preprocess_docs = "textminer.preprocess_docs:main"
+preprocess_docsver2 = "textminer.preprocess_docsver2:main"
 
 [project.urls]
 Homepage = "https://github.com/StranMax/textminer"

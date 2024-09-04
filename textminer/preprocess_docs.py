@@ -1,7 +1,15 @@
 """
-Python script for preprocessing text documents
+Python script for preprocessing pdf documents
 
 Follows Trankit workflow
+
+1. PDF to text conversion  
+2. Sentence segmentation  
+3. Tokenization  
+4. Posdep parsing  
+5. Lemmatization  
+
+
 
 This program requires following packages:
   - list_of_packages_to_be_added
@@ -30,7 +38,7 @@ def cli_args():
                         help="path to input document or directory with text (pdf) documents")
                         
     parser.add_argument("outpath", type=str, 
-                        help="path to output directory")
+                        help="path to output parent directory")
                         
     # Optional verbosity counter (eg. -v, -vv, -vvv, etc.)
     parser.add_argument(
