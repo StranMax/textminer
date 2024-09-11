@@ -15,7 +15,6 @@ dependencies = [
 ]
 
 [project.optional-dependencies]
-dev = ["pytest"]
 textprocessor = [
 	"pytest",
 	"trankit",
@@ -24,6 +23,7 @@ textprocessor = [
 	"pycryptodome"
 ]
 textanalyser = [
+	"pytest",
 	"huggingface_hub", 
 	"transformers",
 	"sentence_transformers",
