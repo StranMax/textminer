@@ -16,13 +16,14 @@ dependencies = [
 
 [project.optional-dependencies]
 dev = ["pytest"]
-preprocessing = [
+textprocessor = [
+	"pytest",
 	"trankit",
 	"six",
 	"PyPDF2", 
 	"pycryptodome"
 ]
-clustering = [
+textanalyser = [
 	"huggingface_hub", 
 	"transformers",
 	"sentence_transformers",

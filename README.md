@@ -1,22 +1,7 @@
 # textminer
 
 Command line tools for text mining
-
-1. Tool for converting raw conll-u files to one 
-line per document in MALLET style `id	document	LEMMA LEMMA LEMMA ...`  
-with stopwords removed
-
-2. Natural language processing with [trankit](https://github.com/nlp-uoregon/trankit).  
-- Sentence segmentation  
-- Tokenization  
-- Posdep tagging  
-- Lemmatization  
-
-3. Sentence embedding and clustering  
-- Sentence embedding  
-- Dimensionality reduction  
-- Clustering  
-- Labeling  
+ 
 
 ## Installation
 
@@ -28,19 +13,31 @@ pytorch package. More details on pytorch [here](https://pytorch.org/get-started/
 pip install torch==2.0.1 torchvision==0.15.2 torchaudio==2.0.2 --index-url https://download.pytorch.org/whl/cu118
 ```
 
-Then you can proceed by installing this package normally:  
+Then you can proceed by installing this package in one of three ways:  
+
+1. Tool for converting raw conll-u files to one 
+line per document in MALLET style `id	document	LEMMA LEMMA LEMMA ...`  
+with stopwords removed  
 ```
 pip install git+https://github.com/StranMax/textminer.git@master
 ```
 
-or optionally for trankit:  
+2. Natural language processing with [trankit](https://github.com/nlp-uoregon/trankit).  
+- Sentence segmentation  
+- Tokenization  
+- Posdep tagging  
+- Lemmatization  
 ```
-pip install "textminer[preprocessing] @ git+https://github.com/StranMax/textminer.git@master"
+pip install "textminer[textprocessor] @ git+https://github.com/StranMax/textminer.git@master"
 ```
 
-or for transformers:  
+3. Sentence embedding and clustering with transformers 
+- Sentence embedding  
+- Dimensionality reduction  
+- Clustering  
+- Labeling  
 ```
-pip install "textminer[clustering] @ git+https://github.com/StranMax/textminer.git@master"
+pip install "textminer[textanalyser] @ git+https://github.com/StranMax/textminer.git@master"
 ```
 
 Requisites:
