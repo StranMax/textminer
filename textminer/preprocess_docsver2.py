@@ -142,7 +142,8 @@ def main():
     
     if INPATH.is_dir():
         files = [i for i in INPATH.glob('*') if i.is_file()]
-        
+      
+      
     for file in files[7:8]:
         logging.debug(f'Starting loop with {file}')
         document = pdf_to_text(filepath=file)
