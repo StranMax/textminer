@@ -1,9 +1,13 @@
 # textminer
 
-Command line tools for text mining
+Text mining tools
  
 
 ## Installation
+
+Requisites:  
+- python>=3.10
+
 
 > NOTE! GPU-support requires compatible GPU with 
 correct version of CUDA-driver, CUDA-toolkit and 
@@ -25,7 +29,7 @@ pip install git+https://github.com/StranMax/textminer.git@master
 2. Natural language processing with [trankit](https://github.com/nlp-uoregon/trankit).  
 - Sentence segmentation  
 - Tokenization  
-- Posdep tagging  
+- Filtering by posdep tags  
 - Lemmatization  
 ```
 pip install "textminer[textprocessor] @ git+https://github.com/StranMax/textminer.git@master"
@@ -47,6 +51,8 @@ Requisites:
 
 ## Usage
 
+> NOTE! Outdated stuff. To be updated
+
 ```
 conllu2doc.exe C:\Users\maxs\Documents\data\kansallisarkiston_oaipmh_haku_maaseutu\conllu C:\Users\maxs\Documents\data\kansallisarkiston_oaipmh_haku_maaseutu\text_corpus_rmstopwords_lemma_ver4.txt -v --upos "NOUN" "VERB" "ADJ"
 ```
@@ -57,6 +63,8 @@ preprocess_docs -vvv C:\Users\maxst\Desktop\MAAVALTA\documents C:\Users\maxst\De
 ```
 
 ## TODO list:
+
+> NOTE! Outdated.
 
 * Threaded read and write (thread safe write with lock)
 
