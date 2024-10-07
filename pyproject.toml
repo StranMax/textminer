@@ -17,6 +17,7 @@ dependencies = [
 [project.optional-dependencies]
 textprocessor = [
 	"pytest",
+	"pandas",
 	"trankit",
 	"six",
 	"PyPDF2", 
