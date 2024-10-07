@@ -173,7 +173,10 @@ def main():
         
         for pdf in pdfs:
             logging.info(f'Processing file {pdf.name}...')
-            text = pdf2text(pdf)
+            try:
+                text = pdf2text(pdf)
+            except as e:
+                logging.warning(f'PDF to text conversion failed with exception: {e}')
             if text is None:
                 logging.warning(f'Found no text in {pdf.name}. Skipping...')
                 continue
