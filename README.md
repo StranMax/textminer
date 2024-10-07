@@ -21,7 +21,7 @@ Then you can proceed by installing this package in one of three ways:
 
 1. Tool for converting raw conll-u files to one 
 line per document in MALLET style `id	document	LEMMA LEMMA LEMMA ...`  
-with stopwords removed  
+with stopwords removed (OBSOLETE! NOT MAINTAINED)  
 ```
 pip install git+https://github.com/StranMax/textminer.git@master
 ```
@@ -51,20 +51,34 @@ Requisites:
 
 ## Usage
 
-> NOTE! Outdated stuff. To be updated
+> Convert conll-u file to <LEMMA> <LEMMA>... style possibly filtered by UPOS:  
 
 ```
 conllu2doc.exe C:\Users\maxs\Documents\data\kansallisarkiston_oaipmh_haku_maaseutu\conllu C:\Users\maxs\Documents\data\kansallisarkiston_oaipmh_haku_maaseutu\text_corpus_rmstopwords_lemma_ver4.txt -v --upos "NOUN" "VERB" "ADJ"
 ```
 
-NLP tasks using trankit:  
+Segment files to sentences and save to csv file:  
+
+For single file:  
+
+```
+files2sentences C:\Users\maxst\Desktop\MAAVALTA\docs_maaseutu_07102024\1_14_2003.pdf C:\Users\maxst\Desktop\MAAVALTA\sentence_test\three_files.csv -c C:\Users\maxst\Desktop\MAAVALTA\cache\trankit -vv
+```
+
+For directory of pdf files:
+
+```
+files2sentences C:\Users\maxst\Desktop\MAAVALTA\test_docs C:\Users\maxst\Desktop\MAAVALTA\sentence_test\three_files.csv -c C:\Users\maxst\Desktop\MAAVALTA\cache\trankit -vv
+```
+
+NLP tasks using trankit (OLD STUFF):  
 ```
 preprocess_docs -vvv C:\Users\maxst\Desktop\MAAVALTA\documents C:\Users\maxst\Desktop\MAAVALTA\
 ```
 
 ## TODO list:
 
-> NOTE! Outdated.
+> NOTE! This list is outdated. To be updated.
 
 * Threaded read and write (thread safe write with lock)
 

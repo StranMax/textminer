@@ -33,8 +33,16 @@ textanalyser = [
 	"umap-learn"
 ]
 
+topicmodeling = [
+    "bertopic",
+	"datamapplot",
+	"huggingface_hub",
+	"transformers"
+]
+
 [project.scripts]
 conllu2doc = "textminer.conllu2doc:cli"
+files2sentences = "textminer.textprocessor:main"
 preprocess_docs = "textminer.preprocess_docs:main"
 preprocess_docsver2 = "textminer.preprocess_docsver2:main"
 
