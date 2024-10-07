@@ -164,7 +164,7 @@ def main():
         sentences = pd.DataFrame({'doc': INPUT.name, 'nro': range(len(sent)), 'sentence': sent})
         
         logging.info(f'Writing csv of size: {sentences.shape[0]}.')
-        sentences.to_csv(SENTENCEFILE, sep=';', encoding='utf-8', escapechar=r'\')
+        sentences.to_csv(SENTENCEFILE, sep=';', encoding='utf-8', escapechar='\\', index=False)
         logging.info(f'Finished.')
     elif INPUT.is_dir():
         logging.info(f'{INPUT.name} is directory')
@@ -185,5 +185,5 @@ def main():
                 else:
                     sentences_all = pd.DataFrame({'doc': pdf.name, 'nro': range(len(sent)), 'sentence': sent})
         logging.info(f'Writing csv of size: {sentences_all.shape[0]}.')        
-        sentences_all.to_csv(SENTENCEFILE, sep=';', encoding='utf-8', escapechar=r'\')
+        sentences_all.to_csv(SENTENCEFILE, sep=';', encoding='utf-8', escapechar='\\', index=False)
         logging.info(f'Finished')
