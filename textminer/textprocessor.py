@@ -155,7 +155,11 @@ def main():
         logging.info(f'{INPUT.name} is file')
         
         logging.info(f'Extracting text from pdf...')
-        text = pdf2text(INPUT)
+        try:
+            text = pdf2text(INPUT)
+        except Exception as e:
+            logging.warning(f'PDF to text conversion failed with exception: {e}. Exiting...')
+            return None
         if text is None:
             logging.warning(f'No text found in {INPUT.name}. Exiting...')
             return None
@@ -175,8 +179,9 @@ def main():
             logging.info(f'Processing file {pdf.name}...')
             try:
                 text = pdf2text(pdf)
-            except as e:
-                logging.warning(f'PDF to text conversion failed with exception: {e}')
+            except Exception as e:
+                logging.warning(f'PDF to text conversion failed with exception: {e}. Skipping...')
+                continue
             if text is None:
                 logging.warning(f'Found no text in {pdf.name}. Skipping...')
                 continue
