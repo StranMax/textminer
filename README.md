@@ -61,18 +61,18 @@ Requisites:
 conllu2doc.exe C:\Users\maxs\Documents\data\kansallisarkiston_oaipmh_haku_maaseutu\conllu C:\Users\maxs\Documents\data\kansallisarkiston_oaipmh_haku_maaseutu\text_corpus_rmstopwords_lemma_ver4.txt -v --upos "NOUN" "VERB" "ADJ"
 ```
 
-Segment files to sentences and save to csv file:  
+Segment files to sentences and save to parquet file (csv unreliable for large datasets):  
 
 For single file:  
 
 ```
-files2sentences C:\Users\maxst\Desktop\MAAVALTA\docs_maaseutu_07102024\1_14_2003.pdf C:\Users\maxst\Desktop\MAAVALTA\sentence_test\three_files.csv -c C:\Users\maxst\Desktop\MAAVALTA\cache\trankit -vv
+files2sentences C:\Users\maxst\Desktop\MAAVALTA\docs_maaseutu_07102024\1_14_2003.pdf C:\Users\maxst\Desktop\MAAVALTA\sentence_test\sentences_of_three_files.parquet -c C:\Users\maxst\Desktop\MAAVALTA\cache\trankit -vv
 ```
 
 For directory of pdf files:
 
 ```
-files2sentences C:\Users\maxst\Desktop\MAAVALTA\test_docs C:\Users\maxst\Desktop\MAAVALTA\sentence_test\three_files.csv -c C:\Users\maxst\Desktop\MAAVALTA\cache\trankit -vv
+files2sentences C:\Users\maxst\Desktop\MAAVALTA\test_docs C:\Users\maxst\Desktop\MAAVALTA\sentence_test\sentences_of_three_files.parquet -c C:\Users\maxst\Desktop\MAAVALTA\cache\trankit -vv
 ```
 
 NLP tasks using trankit (OLD STUFF):  
