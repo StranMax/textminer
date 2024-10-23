@@ -12,10 +12,14 @@ Requisites:
 > NOTE! GPU-support requires compatible GPU with 
 correct version of CUDA-driver, CUDA-toolkit and 
 pytorch package. More details on pytorch [here](https://pytorch.org/get-started/locally/).
-> With CUDA toolkit 11.8 on Windows 11 system execute following command:  
+  
 ```
 pip install torch==2.0.1 torchvision==0.15.2 torchaudio==2.0.2 --index-url https://download.pytorch.org/whl/cu118
 ```
+
+> Tested with CUDA toolkit 11.8 on Windows 11 system with NVIDIA RTX A500 Laptop GPU driver version 552
+> Tested with CUDA toolkit 11.8 on Ubuntu 22.04 system with 1 and 2 NVIDIA Tesla P100 GPU driver version 550
+
 
 Then you can proceed by installing this package in one of three ways:  
 
