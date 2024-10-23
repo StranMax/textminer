@@ -18,6 +18,7 @@ dependencies = [
 textprocessor = [
 	"pytest",
 	"pandas",
+        "pyarrow",
 	"trankit",
 	"six",
 	"PyPDF2", 

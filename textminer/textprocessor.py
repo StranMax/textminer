@@ -95,8 +95,8 @@ def cli_args():
                         type=str)
                         
     parser.add_argument("sentencefile", 
-                        metavar="<text file>",
-                        help=("Output text file with all sentences seperated by newlines"), 
+                        metavar="<path/to/file.parquet>",
+                        help=("Output sentence file with sentences in seperate lines"), 
                         type=str)
                         
     parser.add_argument("-c", "--cache_dir", 
@@ -167,17 +167,20 @@ def main():
         sent = segment_sentences(p, text)
         sentences = pd.DataFrame({'doc': INPUT.name, 'nro': range(len(sent)), 'sentence': sent})
         
-        logging.info(f'Writing csv of size: {sentences.shape[0]}.')
-        sentences.to_csv(SENTENCEFILE, sep=';', encoding='utf-8', escapechar='\\', index=False)
+        #logging.info(f'Writing csv of size: {sentences.shape[0]}.')
+        logging.info(f'Writing parquet of size: {sentences.shape}.')
+        #sentences.to_csv(SENTENCEFILE, sep=';', encoding='utf-8', escapechar='\\', index=False)
+        sentences.to_parquet(SENTENCEFILE, index=False)
         logging.info(f'Finished.')
     elif INPUT.is_dir():
         logging.info(f'{INPUT.name} is directory')
         pdfs = [pdf for pdf in INPUT.glob('**/*.pdf') if pdf.is_file()]
         logging.info(f'Found in total {len(pdfs)} files.')
         
-        for pdf in pdfs:
-            logging.info(f'Processing file {pdf.name}...')
+        for idx, pdf in enumerate(pdfs, start=1):
+            logging.info(f'[{idx}/{len(pdfs)}] {pdf.name}')
             try:
+                logging.info(f'[{idx}/{len(pdfs)}] {pdf.name} pdf2text...')
                 text = pdf2text(pdf)
             except Exception as e:
                 logging.warning(f'PDF to text conversion failed with exception: {e}. Skipping...')
@@ -185,6 +188,7 @@ def main():
             if text is None:
                 logging.warning(f'Found no text in {pdf.name}. Skipping...')
                 continue
+            logging.info(f'[{idx}/{len(pdfs)}] {pdf.name} segment_sentences...')
             sent = segment_sentences(p, text)
             if sent is not None:
                 sentences = pd.DataFrame({'doc': pdf.name, 'nro': range(len(sent)), 'sentence': sent})
@@ -192,6 +196,8 @@ def main():
                     sentences_all = pd.concat([sentences_all, sentences], ignore_index=True)
                 else:
                     sentences_all = pd.DataFrame({'doc': pdf.name, 'nro': range(len(sent)), 'sentence': sent})
-        logging.info(f'Writing csv of size: {sentences_all.shape[0]}.')        
-        sentences_all.to_csv(SENTENCEFILE, sep=';', encoding='utf-8', escapechar='\\', index=False)
+        #logging.info(f'Writing csv of size: {sentences_all.shape[0]}.')        
+        logging.info(f'Writing parquet of size: {sentences_all.shape}.')
+        #sentences_all.to_csv(SENTENCEFILE, sep=';', encoding='utf-8', escapechar='\\', index=False)
+        sentences_all.to_parquet(SENTENCEFILE, index=False)
         logging.info(f'Finished')
